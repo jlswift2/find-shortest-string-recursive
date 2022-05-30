@@ -1,5 +1,11 @@
 function findShortestStringRecursive(arr) {
-  // type your code here
+  if (arr.length === 1) {
+    return arr[0]
+  }
+
+  let result = findShortestStringRecursive(arr.slice(1))
+
+  return arr[0].length <= result.length ? arr[0] : result;
 }
 
 if (require.main === module) {
@@ -20,5 +26,13 @@ if (require.main === module) {
 
 module.exports = findShortestStringRecursive;
 
-// Please add your pseudocode to this file
-// And a written explanation of your solution
+// We first must write the base case when the array length is 1.
+// Then we can recursivly slice the array into pieces, each of which will be stored in a variable
+// Once we have each piece stored, we will return the shortest of each comparison until the base case is the only return left
+
+// if array length === 1
+//   return that element
+
+// result = array sliced by 1 with the function recursivly called
+// return (the first element of the array's length <= the result ? first element : result)
+
